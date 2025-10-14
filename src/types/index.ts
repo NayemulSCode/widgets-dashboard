@@ -23,6 +23,13 @@ export interface Theme {
   light: string;
 }
 
+export interface Widget {
+  id: string;
+  type: WidgetType;
+  title: string;
+  position: number;
+}
+
 export const THEMES: Record<ThemeColor, Theme> = {
   purple: {
     name: "purple",
