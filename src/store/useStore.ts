@@ -1,4 +1,4 @@
-import { Note, ThemeColor, Widget } from "@/types";
+import { CalendarEvent, Note, Task, ThemeColor, Widget } from "@/types";
 import { create } from "zustand";
 interface DashboardStore {
   // theme
@@ -14,6 +14,17 @@ interface DashboardStore {
   notes: Note[];
   addNote: (note: Omit<Note, "id">) => void;
   deleteNote: (id: string) => void;
+
+  // Tasks
+  tasks: Task[];
+  addTask: (task: Omit<Task, "id">) => void;
+  toggleTask: (id: string) => void;
+  deleteTask: (id: string) => void;
+
+  // Calendar
+  events: CalendarEvent[];
+  addEvent: (event: Omit<CalendarEvent, "id">) => void;
+  deleteEvent: (id: string) => void;
 }
 
 export const useStore = create<DashboardStore>((set) => ({
@@ -37,5 +48,32 @@ export const useStore = create<DashboardStore>((set) => ({
   deleteNote: (id) =>
     set((state) => ({
       notes: state.notes.filter((n) => n.id !== id),
+    })),
+
+  // tasks
+  tasks: [],
+  addTask: (task) =>
+    set((state) => ({
+      tasks: [...state.tasks, { ...task, id: crypto.randomUUID() }],
+    })),
+  toggleTask: (id) =>
+    set((state) => ({
+      tasks: state.tasks.map((t) =>
+        t.id === id ? { ...t, completed: !t.completed } : t
+      ),
+    })),
+  deleteTask: (id) =>
+    set((state) => ({
+      tasks: state.tasks.filter((n) => n.id !== id),
+    })),
+  // calender events
+  events: [],
+  addEvent: (event) =>
+    set((state) => ({
+      events: [...state.events, { ...event, id: crypto.randomUUID() }],
+    })),
+  deleteEvent: (id) =>
+    set((state) => ({
+      events: state.events.filter((n) => n.id !== id),
     })),
 }));

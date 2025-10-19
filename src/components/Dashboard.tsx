@@ -3,6 +3,7 @@ import { useStore } from "@/store/useStore";
 import { THEMES } from "@/types";
 import ThemeSelector from "./ThemeSelector";
 import WidgetContainer from "./WidgetContainer";
+import CalendarWidget from "./widgets/CalendarWidget";
 import NotesWidget from "./widgets/NotesWidget";
 import TasksWidget from "./widgets/TasksWidget";
 
@@ -16,6 +17,8 @@ const Dashboard = () => {
         return <NotesWidget />;
       case "tasks":
         return <TasksWidget />;
+      case "calendar":
+        return <CalendarWidget />;
       default:
         return null;
     }
