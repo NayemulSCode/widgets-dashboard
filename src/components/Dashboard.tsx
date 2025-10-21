@@ -5,6 +5,7 @@ import { THEMES } from "@/types";
 import {
   closestCenter,
   DndContext,
+  DragEndEvent,
   PointerSensor,
   useSensor,
   useSensors,
@@ -35,7 +36,7 @@ const Dashboard = () => {
       },
     })
   );
-  const handleDragEnd = (event: DragEvent) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
       const oldIndex = widgets.findIndex((w) => w.id === active.id);
