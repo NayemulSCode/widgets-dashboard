@@ -14,6 +14,21 @@ export interface Note {
   createAt: Date;
   color: string;
 }
+
+export interface Task {
+  id: string;
+  title: string;
+  completed: boolean;
+  dueDate?: Date;
+}
+
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  date: Date;
+  color: string;
+}
+
 export interface Theme {
   name: ThemeColor;
   primary: string;
@@ -21,6 +36,13 @@ export interface Theme {
   gradient: string;
   hover: string;
   light: string;
+}
+
+export interface Widget {
+  id: string;
+  type: WidgetType;
+  title: string;
+  position: number;
 }
 
 export const THEMES: Record<ThemeColor, Theme> = {
