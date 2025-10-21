@@ -58,9 +58,9 @@ const CalendarWidget = () => {
           events.map((event) => (
             <div
               key={event.id}
-              className="flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
+              className={`${event.color} flex items-start gap-3 p-3 rounded-lg  text-slate-900 group`}
             >
-              <div className={`${event.color} w-1 h-full rounded-full`} />
+              <div className={`w-1 h-full rounded-full`} />
               <CalendarIcon size={20} className="text-slate-400 mt-0.5" />
               <div className="flex-1">
                 <p className="text-white font-medium">{event.title}</p>
